@@ -26,4 +26,4 @@ end
 
 person = Person.new(21, 'joao', false)
 
-p person.can_use_services?
+person.can_use_services?
