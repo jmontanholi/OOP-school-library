@@ -5,8 +5,12 @@ class Student < Person
     super(age, name, parent_permission)
     @classroom = classroom
   end
+
+  def play_hooky
+    '¯\(ツ)/¯'
+  end
 end
 
 student = Student.new('A1', 15, 'pedro', false)
 
-p student.name
+student.play_hooky
