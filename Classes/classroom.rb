@@ -2,8 +2,8 @@ class Classroom
   attr_accessor :label
   attr_reader :students
 
-  def initialize
-    @label = Random.rand(1...50)
+  def initialize(label = Random.rand(1...50))
+    @label = label
     @students = []
   end
 
