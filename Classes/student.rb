@@ -1,6 +1,5 @@
 require_relative 'person'
 require_relative 'classroom'
-require 'pry'
 
 class Student < Person
   attr_reader :owner
@@ -18,13 +17,3 @@ class Student < Person
     '¯\(ツ)/¯'
   end
 end
-
-student = Student.new(15, 'pedro', false)
-
-student.play_hooky
-
-classroom = Classroom.new
-
-classroom.add_student(student)
-
-binding.pry
