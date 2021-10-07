@@ -31,7 +31,3 @@ class Person
     @age >= 18
   end
 end
-
-person = Person.new(21, 'joao', false)
-
-p person.validate_name
