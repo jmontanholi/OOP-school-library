@@ -88,7 +88,7 @@ module AppFunctions
     def validate_date(input)
       return unless input == ''
     
-      puts 'Please enter a valid number'
+      puts 'Please enter a valid date'
       input = gets.chomp
       validate_date(input)
     end
