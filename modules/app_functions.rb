@@ -3,26 +3,28 @@ require_relative '../Classes/student'
 require_relative '../Classes/teacher'
 require_relative '../Classes/rental'
 
-module AppFunctions 
+module AppFunctions
   class Show
     def books(list)
       list.each_with_index { |b, i| puts "\n(#{i}) Title: '#{b.title}' Author: '#{b.author}'" }
     end
-    
+
     def people(list)
-      list.each_with_index { |person, i| puts "\n(#{i}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+      list.each_with_index do |person, i|
+        puts "\n(#{i}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+      end
     end
-    
+
     def rentals(list)
       puts "\nPlease enter the id of the person"
       id = gets.chomp
-    
+
       puts "\nRentals:"
       list.each do |r|
         puts "Date: #{r.date}, Book: '#{r.book.title}', Author: '#{r.book.author}'" if id.to_i == r.person.id
       end
     end
-    
+
     def options
       puts "\nPlease choose an option by enterin a number:"
       puts '1 - List all books'
@@ -69,7 +71,7 @@ module AppFunctions
       student = Student.new(age, name, parent_permission: permission == 1)
       add_to_list(list, student)
     end
-    
+
     def teacher(list, age, name)
       puts "\nEnter the specialization of the teacher"
       spec = gets.chomp
@@ -94,7 +96,8 @@ module AppFunctions
       add_to_list(list, rental)
     end
 
-    private 
+    private
+
     def add_to_list(list, item)
       list << item
       'Created sucessfully'
@@ -102,15 +105,15 @@ module AppFunctions
 
     def validate_num(input, list)
       return unless input.to_i > (list.length - 1) || input == ''
-    
+
       puts 'Please enter a valid number'
       input = gets.chomp
       validate_num(input, list)
     end
-    
+
     def validate_date(input)
       return unless input == ''
-    
+
       puts 'Please enter a valid date'
       input = gets.chomp
       validate_date(input)
