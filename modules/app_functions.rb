@@ -1,3 +1,8 @@
+require_relative '../Classes/book'
+require_relative '../Classes/student'
+require_relative '../Classes/teacher'
+require_relative '../Classes/rental'
+
 module AppFunctions 
   class Create 
     def create_book(list)
