@@ -31,6 +31,13 @@ To get a local copy up and running follow these simple example steps.
 - GitHub: [jmontanholi](https://github.com/jmontanholi)
 - Twitter: [MontanholiNunes](https://twitter.com/MontanholiNunes)
 - LinkedIn: [Joao vitor montanholi](https://www.linkedin.com/in/joaovitormontanholi/)
+
+👤 **Luis Octavio Ramirez Cruz**
+
+- GitHub: [LOctavio](https://github.com/LOctavio)
+- Twitter: [@Octavio_ram431](https://twitter.com/Octavio_ram431)
+- LinkedIn: [Luis Octavio Ramirez Cruz](https://www.linkedin.com/in/luis-octavio-ramirez-cruz/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
