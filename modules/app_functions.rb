@@ -4,18 +4,53 @@ require_relative '../Classes/teacher'
 require_relative '../Classes/rental'
 
 module AppFunctions 
-  class Create 
+  class Show
+    def books(list)
+      list.each_with_index { |b, i| puts "\n(#{i}) Title: '#{b.title}' Author: '#{b.author}'" }
+    end
+    
+    def people(list)
+      list.each_with_index { |person, i| puts "\n(#{i}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
+    end
+    
+    def rentals(list)
+      puts "\nPlease enter the id of the person"
+      id = gets.chomp
+    
+      puts "\nRentals:"
+      list.each do |r|
+        puts "Date: #{r.date}, Book: '#{r.book.title}', Author: '#{r.book.author}'" if id.to_i == r.person.id
+      end
+    end
+    
+    def options
+      puts "\nPlease choose an option by enterin a number:"
+      puts '1 - List all books'
+      puts '2 - List all people'
+      puts '3 - Create a person'
+      puts '4 - Create a book'
+      puts '5 - Create a rental'
+      puts '6 - List all rentals for a given person id'
+      puts '7 - Exit'
+    end
+  end
+
+  class Create
+    def initialize
+      @show = Show.new
+    end
+
     def book(list)
-      puts "\n Enter a book title"
+      puts "\nEnter a book title"
       title = gets.chomp
-      puts "\n Enter the author of the book"
+      puts "\nEnter the author of the book"
       author = gets.chomp
       book = Book.new(title, author)
       add_to_list(list, book)
     end
 
     def person(list)
-      puts "\n Do you want to create a (0) Student or a (1) Teacher?"
+      puts "\nDo you want to create a (0) Student or a (1) Teacher?"
       input = gets.chomp
       puts "\nEnter the age of the person"
       age = gets.chomp
@@ -44,20 +79,15 @@ module AppFunctions
 
     def rental(list, book_list, people_list)
       puts "\nChoose a book from the list"
-      book_list.each { |b| puts "(#{book_list.index(b)}) Title: '#{b.title}' Author: '#{b.author}'" }
+      @show.books(book_list)
       book_choice = gets.chomp
       validate_num(book_choice, book_list)
       puts "\nChoose a person"
-      people_list.each { |person| puts "(#{people_list.index(person)}) Name: '#{person.name}' ID: '#{person.id}'" }
+      @show.people(people_list)
       person_choice = gets.chomp
       validate_num(person_choice, people_list)
-      puts "\nPlease enter a day"
-      day = gets.chomp
-      puts "\nPlease enter a month"
-      month = gets.chomp
-      puts "\nPlease enter a year"
-      year = gets.chomp
-      date = "#{day}/#{month}/#{year}"
+      puts "\nPlease enter a date e.g. 01/01/1990"
+      date = gets.chomp
       validate_date(date)
       rental = Rental.new(date, people_list[person_choice.to_i], book_list[book_choice.to_i])
       puts 'Created successfully'
@@ -84,38 +114,6 @@ module AppFunctions
       puts 'Please enter a valid date'
       input = gets.chomp
       validate_date(input)
-    end
-  end
-
-  class Show
-    def books(list)
-      list.each { |b| puts "\nTitle: '#{b.title}' Author: '#{b.author}'" }
-    end
-    
-    def people(list)
-      list.each { |person| puts "\n[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
-    end
-    
-    def rentals(list)
-      puts "\nPlease enter the id of the person"
-      id = gets.chomp
-    
-      puts "\nRentals:"
-      list.each do |r|
-        puts "Date: #{r.date}, Book: '#{r.book.title}', Author: '#{r.book.author}'" if id.to_i == r.person.id
-      end
-    end
-    
-    def options
-      puts ' '
-      puts 'Please choose an option by enterin a number:'
-      puts '1 - List all books'
-      puts '2 - List all people'
-      puts '3 - Create a person'
-      puts '4 - Create a book'
-      puts '5 - Create a rental'
-      puts '6 - List all rentals for a given person id'
-      puts '7 - Exit'
     end
   end
 end
