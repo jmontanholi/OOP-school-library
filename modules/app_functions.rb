@@ -5,30 +5,28 @@ require_relative '../Classes/rental'
 
 module AppFunctions 
   class Create 
-    def create_book(list)
-      puts ' '
-      puts 'Enter a book title'
+    def book(list)
+      puts "\n Enter a book title"
       title = gets.chomp
-      puts ' '
-      puts 'Enter the author of the book'
+      puts "\n Enter the author of the book"
       author = gets.chomp
       book = Book.new(title, author)
       add_to_list(list, book)
     end
 
-    def create_person(list)
+    def person(list)
       puts "\n Do you want to create a (0) Student or a (1) Teacher?"
       input = gets.chomp
-      create_student(list) if input == '0'
-      create_teacher(list) if input == '1'
-    end
-
-    def create_student(list)
-      puts "\nEnter the age of the student"
+      puts "\nEnter the age of the person"
       age = gets.chomp
-      puts "\nEnter the name of the student"
+      puts "\nEnter the name of the person"
       name = gets.chomp
       name == '' ? false : name
+      student(list, age, name) if input == '0'
+      teacher(list, age, name) if input == '1'
+    end
+
+    def student(list, age, name)
       puts 'The person has partent_permission?'
       puts '(0) No permission'
       puts '(1) Permission'
@@ -37,19 +35,14 @@ module AppFunctions
       add_to_list(list, student)
     end
     
-    def create_teacher(list)
-      puts "\nEnter the age of the teacher"
-      age = gets.chomp
-      puts "\nEnter the name of the teacher"
-      name = gets.chomp
-      name == '' ? false : name
+    def teacher(list, age, name)
       puts "\nEnter the specialization of the teacher"
       spec = gets.chomp
       teacher = Teacher.new(spec, age, name)
       add_to_list(list, teacher)
     end
 
-    def create_rental(list, book_list, people_list)
+    def rental(list, book_list, people_list)
       puts "\nChoose a book from the list"
       book_list.each { |b| puts "(#{book_list.index(b)}) Title: '#{b.title}' Author: '#{b.author}'" }
       book_choice = gets.chomp
@@ -95,15 +88,15 @@ module AppFunctions
   end
 
   class Show
-    def show_books(list)
+    def books(list)
       list.each { |b| puts "\nTitle: '#{b.title}' Author: '#{b.author}'" }
     end
     
-    def show_people(list)
+    def people(list)
       list.each { |person| puts "\n[#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}" }
     end
     
-    def show_rentals(list)
+    def rentals(list)
       puts "\nPlease enter the id of the person"
       id = gets.chomp
     
@@ -113,7 +106,7 @@ module AppFunctions
       end
     end
     
-    def show_options
+    def options
       puts ' '
       puts 'Please choose an option by enterin a number:'
       puts '1 - List all books'

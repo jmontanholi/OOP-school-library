@@ -8,24 +8,24 @@ class Input_Process
     @rentals_list = rentals_list
     @create = Create.new
     @show = Show.new
-    @show.show_options
+    @show.options
     start_app
   end
   def start_app
     user_input = gets.chomp.to_i
     case user_input
     when 1
-      @show.show_books(@book_list)
+      @show.books(@book_list)
     when 2
-      @show.show_people(@people_list)
+      @show.people(@people_list)
     when 3
-      @create.create_person(@people_list)
+      @create.person(@people_list)
     when 4
-      @create.create_book(@book_list)
+      @create.book(@book_list)
     when 5
-      @create.create_rental(@rentals_list, @book_list, @people_list)
+      @create.rental(@rentals_list, @book_list, @people_list)
     when 6
-      @show.show_rentals(@rentals_list)
+      @show.rentals(@rentals_list)
     when 7
       return
     end
