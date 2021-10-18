@@ -38,6 +38,12 @@ To get a local copy up and running follow these simple example steps.
 - Twitter: [@Octavio_ram431](https://twitter.com/Octavio_ram431)
 - LinkedIn: [Luis Octavio Ramirez Cruz](https://www.linkedin.com/in/luis-octavio-ramirez-cruz/)
 
+👤 **Miguelangel Escorche**
+
+- GitHub: [miguelesco](https://github.com/miguelesco)
+- Twitter: [@miguelescorched](https://twitter.com/miguelescorched)
+- LinkedIn: [Miguelangel Escorche](https://www.linkedin.com/in/miguelangel-escorche)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!
