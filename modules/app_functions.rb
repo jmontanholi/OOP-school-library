@@ -12,7 +12,7 @@ module AppFunctions
 
     def people(list)
       list.each_with_index do |person, i|
-        puts "\n(#{i}) [#{person["class"]}] Name: #{person["name"]}, ID: #{person["id"]}, Age: #{person["age"]}"
+        puts "\n(#{i}) [#{person['class']}] Name: #{person['name']}, ID: #{person['id']}, Age: #{person['age']}"
       end
     end
 
@@ -22,7 +22,9 @@ module AppFunctions
 
       puts "\nRentals:"
       list.each do |r|
-        puts "Date: #{r['date']}, Book: '#{r['book']['title']}', Author: '#{r['book']['author']}'" if id.to_i == r['person']['id']
+        if id.to_i == r['person']['id']
+          puts "Date: #{r['date']}, Book: '#{r['book']['title']}', Author: '#{r['book']['author']}'"
+        end
       end
     end
 
@@ -102,16 +104,18 @@ module AppFunctions
     def add_to_list(list, item, type)
       case type
       when 'book'
-        list << {'title'=> item.title, 'author'=> item.author, 'rentals'=> item.rentals}
+        list << { 'title' => item.title, 'author' => item.author, 'rentals' => item.rentals }
       when 'student'
-        list << {'id'=> item.id, 'class'=> item.class, 'age'=> item.age, 'name'=> item.name, 'parent_permission'=> item.parent_permission, 'rentals'=> item.rentals}
+        list << { 'id' => item.id, 'class' => item.class, 'age' => item.age, 'name' => item.name,
+                  'parent_permission' => item.parent_permission, 'rentals' => item.rentals }
       when 'teacher'
-        list << {'id'=> item.id, 'class'=> item.class, 'specialization'=> item.specialization, 'age'=> item.age, 'name'=> item.name, 'rentals'=> item.rentals}
+        list << { 'id' => item.id, 'class' => item.class, 'specialization' => item.specialization, 'age' => item.age,
+                  'name' => item.name, 'rentals' => item.rentals }
       when 'rental'
         obj = {
-          'date'=> item.date,
-          'book'=> {'title'=> item.book['title'], 'author'=> item.book['author']},
-          'person'=> {'id'=> item.person['id']}
+          'date' => item.date,
+          'book' => { 'title' => item.book['title'], 'author' => item.book['author'] },
+          'person' => { 'id' => item.person['id'] }
         }
         list << obj
       end
@@ -137,9 +141,13 @@ module AppFunctions
 
   private
 
-  def save_files(route, data)
-    file = File.open(route, "w+") do |file|
-      file.write(JSON[data])
+  def save_files()
+    routes = ['data/books.json', 'data/people.json', 'data/rentals.json']
+    data = [@book_list, @people_list, @rental_list]
+    for i in 0..2 do 
+      file = File.open(routes[i], 'w+') do |file|
+        file.write(JSON[data[i]])
+      end
     end
   end
 end

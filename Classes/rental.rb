@@ -7,7 +7,7 @@ class Rental
 
     @person = person
     p person
-    if person.class == 'Teacher' || person.class == 'Student'
+    if person.instance_of?('Teacher') || person.instance_of?('Student')
       person.rentals << self
     else
       person['rentals'] << self
@@ -15,7 +15,7 @@ class Rental
 
     @book = book
     p book
-    if book.class == 'Book'
+    if book.instance_of?('Book')
       book.rentals << self
     else
       book['rentals'] << self
