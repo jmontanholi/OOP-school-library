@@ -1,4 +1,9 @@
 require_relative 'modules/app_functions'
+require 'json'
+
+$books = File.open("data/books.json", "r+")
+$people = File.open("data/people.json", "r+")
+$rentals = File.open("data/rental.json", "r+")
 
 class Input_Process
   include AppFunctions
@@ -27,6 +32,7 @@ class Input_Process
     when 6
       @show.rentals(@rentals_list)
     when 7
+      $books.write(JSON.generate(@book_list))
       return
     end
     main(@book_list, @people_list, @rentals_list)
@@ -34,11 +40,12 @@ class Input_Process
 end
 
 def main(book_list_input = [], people_list_input = [], rentals_list_input = [])
-  book_list = book_list_input
-  people_list = people_list_input
-  rentals_list = rentals_list_input
-  input_process = Input_Process.new(book_list, people_list, rentals_list)
+  input_process = Input_Process.new(book_list_input, people_list_input, rentals_list_input)
 end
 
-main
+book_list = JSON.parse($books.read)
+people_list = JSON.parse($people.read)
+rentals_list = JSON.parse($rentals.read)
+
+main(book_list, people_list, rentals_list)
 # This is outrageous Microverse. Thanks.
