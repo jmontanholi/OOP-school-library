@@ -143,7 +143,7 @@ module AppFunctions
 
   def save_files()
     routes = ['data/books.json', 'data/people.json', 'data/rentals.json']
-    data = [@book_list, @people_list, @rental_list]
+    data = [@book_list, @people_list, @rentals_list]
     (0..2).each do |i|
       File.open(routes[i], 'w+') do |file|
         file.write(JSON[data[i]])
