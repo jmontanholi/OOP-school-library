@@ -30,7 +30,7 @@ class InputProcess
     when 6
       @show.rentals(@rentals_list)
     when 7
-      save_files()
+      save_files
       return
     end
     main(@book_list, @people_list, @rentals_list)
@@ -38,7 +38,7 @@ class InputProcess
 end
 
 def main(book_list_input = [], people_list_input = [], rentals_list_input = [])
-  input_process = InputProcess.new(book_list_input, people_list_input, rentals_list_input)
+  InputProcess.new(book_list_input, people_list_input, rentals_list_input)
 end
 
 books = File.open('data/books.json', 'r+')
