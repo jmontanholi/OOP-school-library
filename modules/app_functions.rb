@@ -2,16 +2,17 @@ require_relative '../Classes/book'
 require_relative '../Classes/student'
 require_relative '../Classes/teacher'
 require_relative '../Classes/rental'
+require 'json'
 
 module AppFunctions
   class Show
     def books(list)
-      list.each_with_index { |b, i| puts "\n(#{i}) Title: '#{b.title}' Author: '#{b.author}'" }
+      list.each_with_index { |b, i| puts "\n(#{i}) Title: '#{b['title']}' Author: '#{b['author']}'" }
     end
 
     def people(list)
       list.each_with_index do |person, i|
-        puts "\n(#{i}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
+        puts "\n(#{i}) [#{person["class"]}] Name: #{person["name"]}, ID: #{person["id"]}, Age: #{person["age"]}"
       end
     end
 
@@ -21,7 +22,7 @@ module AppFunctions
 
       puts "\nRentals:"
       list.each do |r|
-        puts "Date: #{r.date}, Book: '#{r.book.title}', Author: '#{r.book.author}'" if id.to_i == r.person.id
+        puts "Date: #{r['date']}, Book: '#{r['book']['title']}', Author: '#{r['book']['author']}'" if id.to_i == r['person']['id']
       end
     end
 
@@ -48,7 +49,7 @@ module AppFunctions
       puts "\nEnter the author of the book"
       author = gets.chomp
       book = Book.new(title, author)
-      add_to_list(list, book)
+      add_to_list(list, book, 'book')
     end
 
     def person(list)
@@ -69,14 +70,14 @@ module AppFunctions
       puts '(1) Permission'
       permission = gets.chomp
       student = Student.new(age, name, parent_permission: permission == 1)
-      add_to_list(list, student)
+      add_to_list(list, student, 'student')
     end
 
     def teacher(list, age, name)
       puts "\nEnter the specialization of the teacher"
       spec = gets.chomp
       teacher = Teacher.new(spec, age, name)
-      add_to_list(list, teacher)
+      add_to_list(list, teacher, 'teacher')
     end
 
     def rental(list, book_list, people_list)
@@ -98,8 +99,22 @@ module AppFunctions
 
     private
 
-    def add_to_list(list, item)
-      list << item
+    def add_to_list(list, item, type)
+      case type
+      when 'book'
+        list << {title: item.title, author: item.author}
+      when 'student'
+        list << {id: item.id, class: item.class, age: item.age, name: item.name, parent_permission: item.parent_permission}
+      when 'teacher'
+        list << {id: item.id, class: item.class, specialization: item.specialization, age: item.age, name: item.name}
+      when 'rental'
+        obj = {
+          date: item.date,
+          book: {title: item.book.title, author: item.book.author},
+          person: {id: item.person.id}
+        }
+        list << obj
+      end
       'Created sucessfully'
     end
 
@@ -119,4 +134,23 @@ module AppFunctions
       validate_date(input)
     end
   end
+
+  private
+
+  def save_files(route, data)
+    file = File.open(route, "w+") do |file|
+      file.write(JSON[data])
+    end
+  end
 end
+
+book = Book.new('auhsduahdua', 'ausdhaudhasd')
+books = [{title: 'ahusdhuadh', author: 'aushduadhuashud'}]
+
+parsed = JSON[book]
+
+p book
+
+dada = JSON[parsed]
+
+p dada

@@ -1,2 +1,1 @@
-[
-]
+[{"id":382,"class":"Student","age":"16","name":"joao","parent_permission":{"parent_permission":false}},{"id":719,"class":"Teacher","specialization":"math","age":"55","name":"miguel"},{"id":583,"class":"Student","age":"15","name":"luis","parent_permission":{"parent_permission":false}}]
