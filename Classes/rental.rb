@@ -1,3 +1,7 @@
+require_relative '../Classes/book'
+require_relative '../Classes/student'
+require_relative '../Classes/teacher'
+
 class Rental
   attr_reader :person, :book
   attr_accessor :date
@@ -6,16 +10,16 @@ class Rental
     @date = date
 
     @person = person
-    p person
-    if person.instance_of?('Teacher') || person.instance_of?('Student')
+    if person.instance_of?(Teacher) || person.instance_of?(Student)
+      p 'Im here'
       person.rentals << self
     else
       person['rentals'] << self
     end
 
     @book = book
-    p book
-    if book.instance_of?('Book')
+    if book.instance_of?(Book)
+      p 'Im here'
       book.rentals << self
     else
       book['rentals'] << self

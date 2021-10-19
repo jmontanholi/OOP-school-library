@@ -43,7 +43,7 @@ end
 
 books = File.open('data/books.json', 'r+')
 people = File.open('data/people.json', 'r+')
-rentals = File.open('data/rental.json', 'r+')
+rentals = File.open('data/rentals.json', 'r+')
 
 book_list = JSON[books.read]
 people_list = JSON[people.read]
