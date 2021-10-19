@@ -6,9 +6,19 @@ class Rental
     @date = date
 
     @person = person
-    person.rentals << self
+    p person
+    if person.class == 'Teacher' || person.class == 'Student'
+      person.rentals << self
+    else
+      person['rentals'] << self
+    end
 
     @book = book
-    book.rentals << self
+    p book
+    if book.class == 'Book'
+      book.rentals << self
+    else
+      book['rentals'] << self
+    end
   end
 end

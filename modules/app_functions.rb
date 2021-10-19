@@ -94,7 +94,7 @@ module AppFunctions
       validate_date(date)
       rental = Rental.new(date, people_list[person_choice.to_i], book_list[book_choice.to_i])
       puts 'Created successfully'
-      add_to_list(list, rental)
+      add_to_list(list, rental, 'rental')
     end
 
     private
@@ -102,16 +102,16 @@ module AppFunctions
     def add_to_list(list, item, type)
       case type
       when 'book'
-        list << {title: item.title, author: item.author}
+        list << {'title'=> item.title, 'author'=> item.author, 'rentals'=> item.rentals}
       when 'student'
-        list << {id: item.id, class: item.class, age: item.age, name: item.name, parent_permission: item.parent_permission}
+        list << {'id'=> item.id, 'class'=> item.class, 'age'=> item.age, 'name'=> item.name, 'parent_permission'=> item.parent_permission, 'rentals'=> item.rentals}
       when 'teacher'
-        list << {id: item.id, class: item.class, specialization: item.specialization, age: item.age, name: item.name}
+        list << {'id'=> item.id, 'class'=> item.class, 'specialization'=> item.specialization, 'age'=> item.age, 'name'=> item.name, 'rentals'=> item.rentals}
       when 'rental'
         obj = {
-          date: item.date,
-          book: {title: item.book.title, author: item.book.author},
-          person: {id: item.person.id}
+          'date'=> item.date,
+          'book'=> {'title'=> item.book['title'], 'author'=> item.book['author']},
+          'person'=> {'id'=> item.person['id']}
         }
         list << obj
       end
@@ -143,14 +143,3 @@ module AppFunctions
     end
   end
 end
-
-book = Book.new('auhsduahdua', 'ausdhaudhasd')
-books = [{title: 'ahusdhuadh', author: 'aushduadhuashud'}]
-
-parsed = JSON[book]
-
-p book
-
-dada = JSON[parsed]
-
-p dada
