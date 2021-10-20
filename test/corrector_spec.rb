@@ -1,9 +1,13 @@
 require_relative '../Classes/corrector'
 
 describe Corrector do 
-  context 'Testing Corrector class' do
+  context 'Testing class' do
     before(:each) do
       @corrector = Corrector.new
+    end
+
+    it 'Is an instance of Corrector' do 
+      expect(@corrector).to be_an_instance_of Corrector
     end
 
     it 'Corrects the name passed to it if the name has the right length' do
