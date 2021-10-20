@@ -3,7 +3,7 @@ require_relative '../Classes/student'
 
 describe Classroom do
   age = 20
-  name = "John"
+  name = 'John'
   parent_permission = false
   student = Student.new(age, name, parent_permission)
   label = 'B'

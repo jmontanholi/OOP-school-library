@@ -2,14 +2,14 @@ require_relative '../Classes/rental'
 require_relative '../Classes/student'
 require_relative '../Classes/book'
 
-describe Rental do 
-  context 'Testing Rental class' do 
+describe Rental do
+  context 'Testing Rental class' do
     before(:each) do
       @student = Student.new(15, 'Pedro')
       @book = Book.new('The hobbit', 'J.R.R Tolkien')
       @rental = Rental.new('10/05/2021', @student, @book)
     end
-    
+
     it 'is an instance of Rental' do
       expect(@rental).to be_an_instance_of Rental
     end

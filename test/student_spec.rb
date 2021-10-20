@@ -6,7 +6,7 @@ describe Student do
     age = 12
     name = 'Luis'
     parent_permission = true
-    classroom = Classroom.new()
+    classroom = Classroom.new
     student = Student.new(age, name, parent_permission)
     student.classroom = classroom
 
