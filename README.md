@@ -1,59 +1,53 @@
 ![](https://img.shields.io/badge/Microverse-blueviolet)
 
-# Project Name
+# OOP School Library
 
-> One paragraph statement about the project.
-
-![screenshot](./app_screenshot.png)
-
-Additional description about the project and its features.
+> This is a project to teach students how to work with classes, classes inheritance and methods/variables override.
 
 ## Built With
 
-- Major languages
-- Frameworks
-- Technologies used
-
-## Live Demo
-
-[Live Demo Link](https://livedemo.com)
-
+- Ruby
+- VScode
+- Git & GitHub
 
 ## Getting Started
 
-**This is an example of how you may give instructions on setting up your project locally.**
-**Modify this file to match your project, remove sections that don't apply. For example: delete the testing section if the currect project doesn't require testing.**
-
-
 To get a local copy up and running follow these simple example steps.
 
-### Prerequisites
+- Open your command line
 
-### Setup
+- Go to the directory where you want this project to be cloned into
 
-### Install
+- Run this command:
+  `git clone https://github.com/jmontanholi/OOP-school-library.git`
 
-### Usage
+- cd into the directory
 
-### Run tests
+- run the main.rb file (if you are on windows you just need to run `main` in other systems you need to run `ruby main.rb`)
 
-### Deployment
+## For testing
 
-
-
+- Run this command in the root directory of the project:
+`rspec test`
 ## Authors
 
-👤 **Author1**
+👤 **João Vítor Montanholi Nunes**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [jmontanholi](https://github.com/jmontanholi)
+- Twitter: [MontanholiNunes](https://twitter.com/MontanholiNunes)
+- LinkedIn: [Joao vitor montanholi](https://www.linkedin.com/in/joaovitormontanholi/)
 
-👤 **Author2**
+👤 **Luis Octavio Ramirez Cruz**
 
-- GitHub: [@githubhandle](https://github.com/githubhandle)
-- Twitter: [@twitterhandle](https://twitter.com/twitterhandle)
-- LinkedIn: [LinkedIn](https://linkedin.com/in/linkedinhandle)
+- GitHub: [LOctavio](https://github.com/LOctavio)
+- Twitter: [@Octavio_ram431](https://twitter.com/Octavio_ram431)
+- LinkedIn: [Luis Octavio Ramirez Cruz](https://www.linkedin.com/in/luis-octavio-ramirez-cruz/)
+
+👤 **Miguelangel Escorche**
+
+- GitHub: [miguelesco](https://github.com/miguelesco)
+- Twitter: [@miguelescorched](https://twitter.com/miguelescorched)
+- LinkedIn: [Miguelangel Escorche](https://www.linkedin.com/in/miguelangel-escorche)
 
 ## 🤝 Contributing
 
@@ -67,9 +61,7 @@ Give a ⭐️ if you like this project!
 
 ## Acknowledgments
 
-- Hat tip to anyone whose code was used
-- Inspiration
-- etc
+- Microverse
 
 ## 📝 License
 
